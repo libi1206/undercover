@@ -19,7 +19,7 @@ import static com.lbhz.common.Const.*;
  * @date :2019-07-04 20:31
  */
 @RestController
-@RequestMapping("/v1/user")
+@RequestMapping("/api/user")
 @Api //使用API注解告诉Swagger这个是一个API
 public class UserController {
     @Autowired

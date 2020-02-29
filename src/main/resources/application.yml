@@ -19,3 +19,7 @@ logging:
   level:
     root: info
     com.lbhz,core.dao: debug
+
+file:
+  file-server-path: /Users/libi/Desktop
+  file-server-url: http://101.37.33.46/file/

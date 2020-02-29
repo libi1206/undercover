@@ -14,6 +14,8 @@ public enum Code {
     USER_NOT_EXIST(1011,"用户不存在"),
     INCORRECT_PASSWORD(1012, "密码错误"),
 
+    STUDENT_ID_NOT_FIND(2000, "学号不存在"),
+
     //管理端异常
     ADMIN_AUTH_ERROR(10001,"用户名或密码错误"),
     ANNO_ID_NOT_FIND(10002,"公告id不存在"),

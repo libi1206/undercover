@@ -1,7 +1,10 @@
 package com.lbhz.core.bean.auto;
 
+import lombok.Builder;
+
 import java.time.LocalDateTime;
 
+@Builder
 public class RecordBean {
     private Integer id;
 
