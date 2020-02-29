@@ -72,7 +72,8 @@
 		</javaClientGenerator>
 
 		<table tableName="record" domainObjectName="RecordBean" />
-		<table tableName="student" domainObjectName="StudentName"/>
+		<table tableName="student" domainObjectName="StudentBean"/>
+		<table tableName="user" domainObjectName="UserBean"/>
 		<!--&lt;!&ndash;数据库字段格式&ndash;&gt;-->
 		<!--<property name="useActualColumnNames" value="true" />-->
 		<!--

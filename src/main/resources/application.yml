@@ -1,0 +1,16 @@
+server.port: 9000
+
+jdbc:
+  type: com.alibaba.druid.pool.DruidDataSource
+  driver-class-name: com.mysql.cj.jdbc.Driver
+  #  正式环境rds
+  url: jdbc:mysql://101.37.33.46:3306/undercover?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+  username: hyperchain
+  password: hyperch@in1234
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: Libi@1206
+    url: jdbc:mysql://101.37.33.46:3306/undercover?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8

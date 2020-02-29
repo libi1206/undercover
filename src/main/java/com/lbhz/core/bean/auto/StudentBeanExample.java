@@ -3,14 +3,14 @@ package com.lbhz.core.bean.auto;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentNameExample {
+public class StudentBeanExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public StudentNameExample() {
+    public StudentBeanExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

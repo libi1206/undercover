@@ -3,13 +3,12 @@ package com.lbhz.core.dao.auto;
 import com.lbhz.core.bean.auto.RecordBean;
 import com.lbhz.core.bean.auto.RecordBeanExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.ResultMap;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
+import org.apache.ibatis.annotations.*;
+import org.springframework.stereotype.Repository;
+
+@Repository
+@Mapper
 public interface RecordBeanMapper {
     long countByExample(RecordBeanExample example);
 
@@ -24,10 +23,10 @@ public interface RecordBeanMapper {
     @Insert({
         "insert into record (id, student_id, ",
         "screenshot, time_lenth, ",
-        "week_num)",
+        "week_num, create_time)",
         "values (#{id,jdbcType=INTEGER}, #{studentId,jdbcType=VARCHAR}, ",
         "#{screenshot,jdbcType=VARCHAR}, #{timeLenth,jdbcType=INTEGER}, ",
-        "#{weekNum,jdbcType=INTEGER})"
+        "#{weekNum,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})"
     })
     int insert(RecordBean record);
 
@@ -37,7 +36,7 @@ public interface RecordBeanMapper {
 
     @Select({
         "select",
-        "id, student_id, screenshot, time_lenth, week_num",
+        "id, student_id, screenshot, time_lenth, week_num, create_time",
         "from record",
         "where id = #{id,jdbcType=INTEGER}"
     })
@@ -55,7 +54,8 @@ public interface RecordBeanMapper {
         "set student_id = #{studentId,jdbcType=VARCHAR},",
           "screenshot = #{screenshot,jdbcType=VARCHAR},",
           "time_lenth = #{timeLenth,jdbcType=INTEGER},",
-          "week_num = #{weekNum,jdbcType=INTEGER}",
+          "week_num = #{weekNum,jdbcType=INTEGER},",
+          "create_time = #{createTime,jdbcType=TIMESTAMP}",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(RecordBean record);

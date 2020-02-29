@@ -1,5 +1,7 @@
 package com.lbhz.core.bean.auto;
 
+import java.time.LocalDateTime;
+
 public class RecordBean {
     private Integer id;
 
@@ -11,12 +13,15 @@ public class RecordBean {
 
     private Integer weekNum;
 
-    public RecordBean(Integer id, String studentId, String screenshot, Integer timeLenth, Integer weekNum) {
+    private LocalDateTime createTime;
+
+    public RecordBean(Integer id, String studentId, String screenshot, Integer timeLenth, Integer weekNum, LocalDateTime createTime) {
         this.id = id;
         this.studentId = studentId;
         this.screenshot = screenshot;
         this.timeLenth = timeLenth;
         this.weekNum = weekNum;
+        this.createTime = createTime;
     }
 
     public RecordBean() {
@@ -61,5 +66,13 @@ public class RecordBean {
 
     public void setWeekNum(Integer weekNum) {
         this.weekNum = weekNum;
+    }
+
+    public LocalDateTime getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 }

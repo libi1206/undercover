@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lbhz.core.dao.auto.StudentNameMapper">
-  <resultMap id="BaseResultMap" type="com.lbhz.core.bean.auto.StudentName">
+<mapper namespace="com.lbhz.core.dao.auto.StudentBeanMapper">
+  <resultMap id="BaseResultMap" type="com.lbhz.core.bean.auto.StudentBean">
     <constructor>
       <idArg column="id" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
@@ -70,7 +70,7 @@
   <sql id="Base_Column_List">
     id, name, club, major
   </sql>
-  <select id="selectByExample" parameterType="com.lbhz.core.bean.auto.StudentNameExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.lbhz.core.bean.auto.StudentBeanExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -84,13 +84,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <delete id="deleteByExample" parameterType="com.lbhz.core.bean.auto.StudentNameExample">
+  <delete id="deleteByExample" parameterType="com.lbhz.core.bean.auto.StudentBeanExample">
     delete from student
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insertSelective" parameterType="com.lbhz.core.bean.auto.StudentName">
+  <insert id="insertSelective" parameterType="com.lbhz.core.bean.auto.StudentBean">
     insert into student
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -121,7 +121,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.lbhz.core.bean.auto.StudentNameExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.lbhz.core.bean.auto.StudentBeanExample" resultType="java.lang.Long">
     select count(*) from student
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -157,7 +157,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.lbhz.core.bean.auto.StudentName">
+  <update id="updateByPrimaryKeySelective" parameterType="com.lbhz.core.bean.auto.StudentBean">
     update student
     <set>
       <if test="name != null">

@@ -1,6 +1,9 @@
 package com.lbhz.core.bean.auto;
 
-public class StudentName {
+import lombok.Builder;
+
+@Builder
+public class StudentBean {
     private String id;
 
     private String name;
@@ -9,14 +12,14 @@ public class StudentName {
 
     private String major;
 
-    public StudentName(String id, String name, String club, String major) {
+    public StudentBean(String id, String name, String club, String major) {
         this.id = id;
         this.name = name;
         this.club = club;
         this.major = major;
     }
 
-    public StudentName() {
+    public StudentBean() {
         super();
     }
 

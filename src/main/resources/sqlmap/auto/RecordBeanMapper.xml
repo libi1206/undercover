@@ -8,6 +8,7 @@
       <arg column="screenshot" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="time_lenth" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="week_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="create_time" javaType="java.time.LocalDateTime" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, student_id, screenshot, time_lenth, week_num
+    id, student_id, screenshot, time_lenth, week_num, create_time
   </sql>
   <select id="selectByExample" parameterType="com.lbhz.core.bean.auto.RecordBeanExample" resultMap="BaseResultMap">
     select
@@ -109,6 +110,9 @@
       <if test="weekNum != null">
         week_num,
       </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,6 +129,9 @@
       </if>
       <if test="weekNum != null">
         #{weekNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -152,6 +159,9 @@
       <if test="record.weekNum != null">
         week_num = #{record.weekNum,jdbcType=INTEGER},
       </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -163,7 +173,8 @@
       student_id = #{record.studentId,jdbcType=VARCHAR},
       screenshot = #{record.screenshot,jdbcType=VARCHAR},
       time_lenth = #{record.timeLenth,jdbcType=INTEGER},
-      week_num = #{record.weekNum,jdbcType=INTEGER}
+      week_num = #{record.weekNum,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -182,6 +193,9 @@
       </if>
       <if test="weekNum != null">
         week_num = #{weekNum,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
