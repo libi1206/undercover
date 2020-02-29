@@ -1,4 +1,4 @@
-package com.lbhz.core.config;
+package com.lbhz.config;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;

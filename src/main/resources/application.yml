@@ -14,3 +14,8 @@ spring:
     username: root
     password: Libi@1206
     url: jdbc:mysql://101.37.33.46:3306/undercover?useUnicode=true&characterEncoding=utf8&verifyServerCertificate=false&useSSL=false&useOldAliasMetadataBehavior=true&characterEncoding=UTF-8&serverTimezone=GMT%2b8
+
+logging:
+  level:
+    root: info
+    com.lbhz,core.dao: debug
