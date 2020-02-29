@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lbhz.core.dao.AdminMapper">
+
+    <select id="queryRecordList" resultType="com.lbhz.core.bean.AdminListVo">
+        select s.id as student_id, s.name,s.major,s.club,r.week_num,r.time_lenth as time_length,r.screenshot,r.create_time
+            from student s,record r
+            where s.id = r.student_id
+        <if test="weekNum != null">
+            and r.week_num = #{weekNum}
+        </if>
+        <if test="name != null">
+            and s.name like concat('%',#{name},'%')
+        </if>
+        <if test="major != null">
+            and s.major like concat('%',#{major},'%')
+        </if>
+        <if test="studentId != null">
+            and s.id like concat('%',#{studentId},'%')
+        </if>
+        <if test="startRow != null and pageSize != null and pageSize != 0">
+            limit #{startRow,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <select id="countList" resultType="java.lang.Long">
+        select count(*)
+            from student s,record r
+            where s.id = r.student_id
+        <if test="weekNum != null">
+            and r.week_num = #{weekNum}
+        </if>
+        <if test="name != null">
+            and s.name like "%"#{name}"%"
+        </if>
+        <if test="major != null">
+            and s.major like "%"#{major}"%"
+        </if>
+        <if test="studentId != null">
+            and s.id like "%"#{studentId}"%"
+        </if>
+    </select>
+
+</mapper>

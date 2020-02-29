@@ -2,9 +2,12 @@ package com.lbhz.controller;
 
 import com.lbhz.common.response.BaseResult;
 import com.lbhz.config.anno.RequestToken;
+import com.lbhz.service.AdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.Info;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import static com.lbhz.common.Const.ACCESS_PARAM;
@@ -18,6 +21,8 @@ import static com.lbhz.common.Const.ACCESS_PARAM;
 @Api("管理端的接口在这")
 @RequestMapping("/api/admin")
 public class AdminController {
+    @Autowired
+    private AdminService adminService;
 
     @GetMapping("/list")
     @ApiOperation("查询列表")
@@ -31,7 +36,17 @@ public class AdminController {
             @RequestParam(required = false) String major,
             @RequestParam(required = false) String studentId
     ) {
-        return null;
+        return adminService.queryRecordList(page,pageSize,weekNum,name,major,studentId);
+    }
+
+    @GetMapping("/downloadUrl")
+    @ApiOperation("获得excel链接")
+    @RequestToken
+    public BaseResult getDownloadUrl(
+            @RequestHeader(ACCESS_PARAM) String token,
+            @RequestParam Integer weekNum
+    ){
+        return adminService.downLoadExcel(weekNum);
     }
 
 }

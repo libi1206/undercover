@@ -27,7 +27,7 @@ public class AopConfig {
      */
     @Pointcut("within(com.lbhz.controller.*) " +
             "&& @annotation(com.lbhz.config.anno.RequestToken)" +
-            "&& args(..,token)")
+            "&& args(token,..)")
     public void verifyAuthPointcut(String token) { }
 
     /**
