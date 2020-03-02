@@ -6,6 +6,7 @@ import com.lbhz.service.AdminService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.Info;
+import jxl.write.WriteException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,7 @@ public class AdminController {
     public BaseResult getDownloadUrl(
             @RequestHeader(ACCESS_PARAM) String token,
             @RequestParam Integer weekNum
-    ) throws IOException {
+    ) throws IOException, WriteException {
         return adminService.downLoadExcel(weekNum);
     }
 

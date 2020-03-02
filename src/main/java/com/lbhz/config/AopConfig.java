@@ -1,5 +1,7 @@
 package com.lbhz.config;
 
+import com.lbhz.common.exception.BusinessException;
+import com.lbhz.common.response.Code;
 import com.lbhz.service.TokenService;
 import io.jsonwebtoken.JwtException;
 import lombok.extern.slf4j.Slf4j;
@@ -41,7 +43,7 @@ public class AopConfig {
         } catch (JwtException e) {
             log.warn(e.getMessage());
             e.printStackTrace();
-            throw new Exception("鉴权失败");
+            throw new BusinessException(Code.TOKEN_NOT_EXIST);
         }
     }
 }
