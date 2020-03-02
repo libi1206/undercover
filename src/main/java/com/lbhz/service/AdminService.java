@@ -2,6 +2,9 @@ package com.lbhz.service;
 
 import com.lbhz.common.response.BaseResult;
 import io.swagger.models.auth.In;
+import jxl.write.WriteException;
+
+import java.io.IOException;
 
 /**
  * @author :Libi
@@ -11,5 +14,5 @@ import io.swagger.models.auth.In;
 public interface AdminService {
     BaseResult queryRecordList(Integer page, Integer pageSize, Integer weekNum, String name, String major, String club, String studentId);
 
-    BaseResult downLoadExcel(Integer weekNum);
+    BaseResult downLoadExcel(Integer weekNum) throws IOException, WriteException;
 }

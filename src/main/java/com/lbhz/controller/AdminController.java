@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 import static com.lbhz.common.Const.ACCESS_PARAM;
 /**
  * @author :Libi
@@ -46,7 +48,7 @@ public class AdminController {
     public BaseResult getDownloadUrl(
             @RequestHeader(ACCESS_PARAM) String token,
             @RequestParam Integer weekNum
-    ){
+    ) throws IOException {
         return adminService.downLoadExcel(weekNum);
     }
 
