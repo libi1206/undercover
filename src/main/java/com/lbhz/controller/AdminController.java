@@ -34,9 +34,10 @@ public class AdminController {
             @RequestParam(required = false) Integer weekNum,
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String major,
+            @RequestParam(required = false) String club,
             @RequestParam(required = false) String studentId
     ) {
-        return adminService.queryRecordList(page,pageSize,weekNum,name,major,studentId);
+        return adminService.queryRecordList(page,pageSize,weekNum,name,major,club,studentId);
     }
 
     @GetMapping("/downloadUrl")

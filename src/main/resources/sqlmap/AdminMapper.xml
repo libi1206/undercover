@@ -15,9 +15,13 @@
         <if test="major != null">
             and s.major like concat('%',#{major},'%')
         </if>
+        <if test="club != null">
+            and s.club like concat('%',#{club},'%')
+        </if>
         <if test="studentId != null">
             and s.id like concat('%',#{studentId},'%')
         </if>
+        order by create_time DESC
         <if test="startRow != null and pageSize != null and pageSize != 0">
             limit #{startRow,jdbcType=INTEGER}, #{pageSize,jdbcType=INTEGER}
         </if>
@@ -36,8 +40,11 @@
         <if test="major != null">
             and s.major like "%"#{major}"%"
         </if>
+        <if test="club != null">
+            and s.club like concat('%',#{club},'%')
+        </if>
         <if test="studentId != null">
-            and s.id like "%"#{studentId}"%"
+            and s.id like "%"#{studentId}"  %"
         </if>
     </select>
 

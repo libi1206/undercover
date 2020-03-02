@@ -19,6 +19,7 @@ public interface AdminMapper {
             @Param("weekNum") Integer weekNum,
             @Param("name") String name,
             @Param("major") String major,
+            @Param("club") String club,
             @Param("studentId") String studentId
     );
 
@@ -26,6 +27,7 @@ public interface AdminMapper {
             @Param("weekNum") Integer weekNum,
             @Param("name") String name,
             @Param("major") String major,
+            @Param("club") String club,
             @Param("studentId") String studentId
     );
 }
