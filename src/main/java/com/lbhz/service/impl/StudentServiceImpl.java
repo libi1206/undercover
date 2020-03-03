@@ -21,6 +21,7 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author :Libi
@@ -43,7 +44,7 @@ public class StudentServiceImpl implements StudentServer {
     @Override
     public BaseResult updateRecord(MultipartFile multipartFile, RecordDto recordDto) throws IOException {
         //获取文件后缀
-        log.info("文件名：{}",multipartFile.getOriginalFilename());
+        log.info("文件名：{}", multipartFile.getOriginalFilename());
         String fileType = multipartFile.getOriginalFilename().substring(multipartFile.getOriginalFilename().lastIndexOf('.'));
 
         //获取学生信息
@@ -54,7 +55,7 @@ public class StudentServiceImpl implements StudentServer {
         log.info("{} 上传了记录信息,上传的文件是{}文件", studentBean.getName(), fileType);
 
         //保存文件到服务器所在路径
-        File file = new File(fileServerPath, studentBean.getName() + "-" + recordDto.getWeekNum()  + fileType);
+        File file = new File(fileServerPath, studentBean.getName() + "-" + recordDto.getWeekNum() + "-" + System.currentTimeMillis()%1000000 + fileType);
         multipartFile.transferTo(file);
         log.info("保存的位置：{}", file.getAbsolutePath());
         String url = fileServerUrl + file.getName();
@@ -72,11 +73,11 @@ public class StudentServiceImpl implements StudentServer {
     }
 
     @Override
-    public BaseResult queryStudentInfo(String  studentId) {
+    public BaseResult queryStudentInfo(String studentId) {
         //查询数据库
         StudentBeanExample example = new StudentBeanExample();
         example.createCriteria()
-                .andIdLike("%" + studentId + "%");
+                .andIdEqualTo(studentId);
         List<StudentBean> studentBeans = studentBeanMapper.selectByExample(example);
         return BaseResultFactory.produceResult(Code.SUCCESS, studentBeans);
     }
